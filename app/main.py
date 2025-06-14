@@ -3,12 +3,20 @@ from .database import engine
 from . import models 
 from .routers import post , user , auth , vote
 from .config import setting
-
+from fastapi.middleware.cors import CORSMiddleware
 
 
 #models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
  
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 #def find_post_id(id):  
 #    for p in my_post:
 #        if p['id'] == id:
