@@ -102,7 +102,7 @@ def delete_post(id : int , db : Session = Depends(get_db) , current_user : int =
     post = post_query.first()
     if post == None :
         raise HTTPException(status_code = status.HTTP_404_NOT_FOUND , 
-                            detail = F"Post with id : {id} not found")
+                            detail = f"Post with id : {id} not found")
     #my_post.pop(index)
     
     if post.woner_id != current_user.id :
